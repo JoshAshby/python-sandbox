@@ -10,4 +10,5 @@ data = [{"one": "test", 2: "test", "3": 6}]
 msg = json.dumps(data)
 
 for i in range(100):
-	zmqSock.send("0" + msg)
+	try: zmqSock.send("0" + msg)
+	except: pass

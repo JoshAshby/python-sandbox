@@ -9,8 +9,6 @@ zmqSock.setsockopt(zmq.SUBSCRIBE, "0")
 
 redisServer = redis.Redis("localhost")
 
-i = 0
-
 while True:
 	reply = zmqSock.recv()
 	keys = redisServer.keys()
