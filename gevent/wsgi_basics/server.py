@@ -1,6 +1,5 @@
 import gevent
 import signal
-import urlparse
 import re
 from gevent.pywsgi import WSGIServer
 
