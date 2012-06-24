@@ -24,10 +24,18 @@ except:
 
 
 class baseObject(object):
-	def __init__(self, env, start_response, matched):
+	def __init__(self, env, members):
 		self.env = env
-		self.start_response = start_response
-		self.members = matched
+		self.members = members
+	
+	def response(self):
+		status = "200 OK"
+
+		headers = [
+			("Content-type", "text/html"),
+			]
+
+		return status, headers
 
 	def GET(self):
 		pass
@@ -42,7 +50,7 @@ class baseObject(object):
 		pass
 
 	def endPolling(self):
-		return
+		return ''
 
 
 

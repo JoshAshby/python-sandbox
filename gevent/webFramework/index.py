@@ -26,9 +26,6 @@ except:
 	os.chdir(abspath)
 	from config import *
 
-import gevent
-from gevent.pywsgi import WSGIServer
-import signal
 import framework as fw
 import baseObject as bo
 from route import *
@@ -71,28 +68,4 @@ class joshMember(bo.baseObject):
 
 
 if __name__ == '__main__':
-	gevent.signal(signal.SIGQUIT, gevent.shutdown)
-	if type(port) is str:
-		port = int(port)
-	if not address:
-		address = '127.0.0.1'
-	try:
-		server = WSGIServer((address, port), fw.app)
-
-		print ("Now serving py at %s:%i" % (address, port))
-		print "Press Ctrl+c or send SIGQUIT to stop"
-
-		print "\r\nHeres some fancy URLs also:\n\r"
-
-		print "  Url : Class Name"
-		print "  -------------------------"
-		for url in urls:
-			print ("  %s : %s" % (url['url'], url["object"].__name__))
-
-		print "\r\n\r\nNow logging requests:"
-		print "  Remote IP - - [YYYY-MM-DD HH:MM:SS] \"METHOD url HTTP/version\" Status code Something Request timing"
-		print "------------------------------------------------------------------------------------------------------"
-
-		server.serve_forever()
-	except KeyboardInterrupt:
-		gevent.shutdown
+	fw.main()

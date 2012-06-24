@@ -13,8 +13,13 @@ http://joshashby.com
 joshuaashby@joshashby.com
 """
 
-address = '127.0.0.1'
+serverType = "fastcgi"
+#serverType = "gevent"
+
+address = "127.0.0.1"
 port = 8000
+
+debug = True
 
 urls = []
 
